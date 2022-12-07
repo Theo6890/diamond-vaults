@@ -1,0 +1,39 @@
+name: prettier & linters
+
+on: [push, pull_request]
+
+jobs:
+    prettier:
+        name: Prettier check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actionsx/prettier@v2
+              with:
+                  args: --check .
+
+    commitlint:
+        name: Commit-lint check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 5
+            - uses: wagoid/commitlint-github-action@v5
+              with:
+                  failOnWarnings: true
+
+    solhint:
+        name: Solhint check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup Node 16
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '16.x'
+                  cache: 'npm'
+            - name: Install Node dependencies
+              run: rm -rf node_modules && yarn install --immutable --immutable-cache --check-cache # equivalent of `npm ci`
+            - name: Solhint check
+              run: npx solhint src/*.sol

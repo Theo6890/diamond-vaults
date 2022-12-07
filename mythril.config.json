@@ -1,0 +1,10 @@
+{
+    "remappings": [
+        "ds-test/=/share/lib/ds-test/src/",
+        "forge-std/=/share/lib/forge-std/src/"
+    ],
+    "optimizer": {
+        "enabled": true,
+        "runs": 200
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "emmet.excludeLanguages": ["markdown"],
+    "workbench.colorTheme": "Darcula - WebStorm Edition",
+    "files.autoSave": "afterDelay",
+    "workbench.startupEditor": "newUntitledFile",
+    "todo-tree.tree.showScanModeButton": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "workbench.colorCustomizations": {},
+    "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "TEST"],
+    "git.autofetch": true,
+    "window.menuBarVisibility": "compact",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "workbench.editor.untitled.hint": "hidden",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[terraform]": {
+        "editor.defaultFormatter": "hashicorp.terraform"
+    }
+}
