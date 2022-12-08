@@ -8,6 +8,8 @@ All vaults will use the same diamond to store their common data. A vault is a fa
 
 ## Versions
 
+Commits format & version naming: https://r-code.notion.site/Commits-and-versions-bedeee671dec446aa4f8688bc2d9db8c
+
 ### Vault Commons Specifications
 
 -   **Yields percentage and timelock** varies from vaults to vaults
@@ -103,6 +105,7 @@ Maybe later both of them.
 
 ## Generics
 
+-   Code formatter & linter: prettier, solhint, husky, lint-staged & husky
 -   [Foundry](https://book.getfoundry.sh/tutorials/best-practices)
 
 ## Security
@@ -130,7 +133,7 @@ Maybe later both of them.
 # Be Prepared For Audits
 
 -   Well refactored & commented code (NatSpec comment & [PlantUML](https://plantuml.com/starting))
--   Unit (TDD) & integration (BDD) tests (green)
+-   Unit ([TDD](https://r-code.notion.site/TDDs-steps-cecba0a82ee6466f9f479ca553949be2)) & integration (BDD) tests (green)
 -   _Paper code review (architecture & conception tests) - not required for this project_
 -   Use auditing tools (internally)
     -   Secureum articles
