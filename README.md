@@ -4,7 +4,17 @@ The goal of this repository is to implement the diamond pattern (ERC-2535) throu
 
 # Technical Specifications
 
-All vaults will use the same diamond to store their common data. A vault is a facet of a diamond, as there can be many types of vault with different logic implementation.
+## Diamond Pattern
+
+All vaults will use the same diamond to store their common data. A vault is a facet of a diamond, as there can be many types of vault with different logic implementation. <br>
+
+### Facet's Storage
+
+A facet can also have a specific proxy storage (eternal storage, another diamonds stockage, etc...). This will depend on the evolution of the dApp complexity throught development lifecycle.
+
+### Split Heavy Features into Many Diamonds
+
+Maybe a new diamond can be create for each these features: DEXs Integration, Royalities Integration, Streaming Payment Protocol, Streaming Payment Configuration, Multisigs Integration, etc...
 
 ## Versions
 
