@@ -44,19 +44,27 @@ Will surely use Uniswap, maybe 1inch.
 ### v2.0.0: NFT Vaults & Royalities
 
 -   Support whitelisted NFT collections in vaults
--   A percentage of the earned rewards will be paid to NFT creator as royalties
+-   Percentage of earned rewards will be paid to NFT creator as royalties
+
+#### _Questions_
+
+-   _RFT integration?_
 
 ### v3.0.0: Streaming Payment Protocol
 
 Integrate [sablier.finance](http://sablier.finance) or [superfluid](https://www.superfluid.finance).
 Maybe later both of them.
 
--   Pay rewards in real time if the user set it up
-    -   Default config for all vaults
-    -   One configuration
-    -   Forward rewards to another wallet
--   Let each user/address set up the timeframe payment
--   _?Swap rewards & stream payment?_
+-   Pay rewards in real time if the user set it up:
+    -   each address/user must configure to enable (disabled by default)
+    -   default config for all vaults
+    -   one configuration
+    -   forward rewards to another wallet
+    -   timeframe payment
+
+#### _Questions_
+
+-   _Swap rewards & stream payment_
 
 ### v4.0.0: Multisig Vaults
 
