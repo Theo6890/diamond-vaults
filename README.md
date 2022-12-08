@@ -60,6 +60,13 @@ Maybe later both of them.
 
 ### v4.0.0: Multisig Vaults
 
+-   Some vaults only useable with/by multisig
+
+#### _Questions_
+
+-   _Can Safe multisig interact with our contract without any extra code? If not implement it (Safe plugins?)_
+-   _Can a multisig by the owner to manage upgrades of anything without any extra code? If not implement it (Safe plugins?)_
+
 ## EIPs To Use
 
 ### v0.1.0
@@ -75,6 +82,14 @@ Maybe later both of them.
 
 -   195 & 1820: interfaces registries
 -   2981: NFT royalities
+
+### v3.0.0
+
+-   _EIPs for streaming payments?_
+
+### v4.0.0
+
+-   _EIPs for multisigs?_
 
 # Best Practices to Follow
 
