@@ -48,6 +48,16 @@ Will surely use Uniswap, maybe 1inch.
 
 ### v3.0.0: Streaming Payment Protocol
 
+Integrate [sablier.finance](http://sablier.finance) or [superfluid](https://www.superfluid.finance).
+Maybe later both of them.
+
+-   Pay rewards in real time if the user set it up
+    -   Default config for all vaults
+    -   One configuration
+    -   Forward rewards to another wallet
+-   Let each user/address set up the timeframe payment
+-   _?Swap rewards & stream payment?_
+
 ### v4.0.0: Multisig Vaults
 
 ## EIPs To Use
