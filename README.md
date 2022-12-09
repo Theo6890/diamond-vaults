@@ -14,7 +14,7 @@ A facet can also have a specific proxy storage (eternal storage, another diamond
 
 ### Split Heavy Features into Many Diamonds
 
-Maybe a new diamond can be create for each these features: DEXs Integration, Royalities Integration, Streaming Payment Protocol, Streaming Payment Configuration, Multisigs Integration, etc...
+For greater compasability and module oriented project, a new diamond can be create for each these features: DEXs Integration, Royalities Integration, Streaming Payment Protocol, Streaming Payment Configuration, Multisigs Integration, etc...
 
 ## Versions
 
@@ -29,7 +29,8 @@ Commits format & version naming: https://r-code.notion.site/Commits-and-versions
 -   Earn yield as soon as ETH/tokens are deposited
 -   Yields are by default paid in RCODE (project token)
 -   Claim rewards after the time setup by the vault
-    _Note: in diamond storage for deposited balance, save the deposited type (native ETH, tokens, NFTs) and sub-type (e.g. ERC-20, ERC-777, ERC-721, ERC-1155...)_
+
+_Note: in diamond storage for deposited balance, save the deposited type (native ETH, tokens, NFTs) and sub-type (e.g. ERC-20, ERC-777, ERC-721, ERC-1155...)_
 
 ### v0.1.0: ETH Vaults
 
