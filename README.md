@@ -20,15 +20,14 @@ For greater compasability and module oriented project, a new diamond can be crea
 
 Commits format & version naming: https://r-code.notion.site/Commits-and-versions-bedeee671dec446aa4f8688bc2d9db8c
 
-### Vault Commons Specifications
+### Vault Common Specifications
 
 -   **Yields percentage and timelock** varies from vaults to vaults
     -   Generally speaking the longest you lock, the highest the rewards
 -   Deposit automatically timelock the transfered amount of ETH/tokens
 -   Receive proportional amount of shares depending on the ETH/tokens amount deposited
--   Earn yield as soon as ETH/tokens are deposited
 -   Yields are by default paid in RCODE (project token)
--   Claim rewards after the time setup by the vault
+-   Claim rewards after the time setup by the vault, otherwise earn yield as soon as ETH/tokens are deposited
 
 _Note: in diamond storage for deposited balance, save the deposited type (native ETH, tokens, NFTs) and sub-type (e.g. ERC-20, ERC-777, ERC-721, ERC-1155...)_
 
