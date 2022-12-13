@@ -1,15 +1,17 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 
-contract TokenTest is Test {
+import {DiamondVault} from "../src/app/DiamondVault.sol";
+
+contract DiamondVaultTest is Test {
     function setUp() public {}
 
     /*//////////////////////////////////////////////////////////////
                                  BASIC ATTRIBUTES
     //////////////////////////////////////////////////////////////*/
-    function testName() public {
+    function test_Name() public {
         assertTrue(true);
     }
 }
