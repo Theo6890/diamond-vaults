@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
+import {Diamond} from "../diamond/core/Diamond.sol";
+
 /**
  * @notice A diamond contains one or more facets that implement the logic of the app.
  *
@@ -21,15 +23,8 @@ pragma solidity ^0.8.13;
  *      the mapping will fail.
  *
  */
-contract DiamondVault {
-    address public proxyOwner;
-
-    // @return the address where the given function selector is implemented
-    mapping(bytes4 => address) public implementationOf;
-
-    enum ACTION {
-        ADD,
-        UPDATE,
-        REMOVE
-    }
+contract DiamondVault is Diamond {
+    constructor(address contractOwner_, address diamondCutFacet_)
+        Diamond(contractOwner_, diamondCutFacet_)
+    {}
 }
