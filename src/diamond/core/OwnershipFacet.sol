@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {LibDiamond} from "./LibDiamond.sol";
-import {IERC173} from "../../standards/IERC173.sol";
+import {IERC173} from "../standards/IERC173.sol";
 
 contract OwnershipFacet is IERC173 {
     function transferOwnership(address _newOwner) external override {
