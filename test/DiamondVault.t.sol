@@ -113,4 +113,9 @@ contract DiamondVaultTest is Test {
 
         assertTrue(facetAddress != address(0));
     }
+
+    function test_OwnershipFacet() public {
+        ownership = OwnershipFacet(address(diamond));
+        emit log_named_address("owner", ownership.owner());
+    }
 }
