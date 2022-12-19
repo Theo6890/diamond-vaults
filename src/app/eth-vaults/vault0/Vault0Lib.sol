@@ -2,7 +2,7 @@
 pragma solidity ^0.8.17;
 
 struct Vault0 {
-    address owner;
+    address user;
 }
 
 library Vault0Lib {
@@ -17,12 +17,12 @@ library Vault0Lib {
         }
     }
 
-    function setOwner(address owner_) internal {
+    function setUser(address user_) internal {
         Vault0 storage s = getStorage();
-        s.owner = owner_;
+        s.user = user_;
     }
 
-    function getOwner() internal returns (address) {
-        return getStorage().owner;
+    function getUser() internal returns (address) {
+        return getStorage().user;
     }
 }
