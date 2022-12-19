@@ -106,7 +106,11 @@ contract DiamondVaultTest is Test {
     /*//////////////////////////////////////////////////////////////
                                  BASIC ATTRIBUTES
     //////////////////////////////////////////////////////////////*/
-    function test_Name() public {
-        assertTrue(true);
+    function test_FindVault0FromSetOwnerSelector() public {
+        address facetAddress = DiamondLoupeFacet(address(diamond)).facetAddress(
+            bytes4(keccak256("setUser(address)"))
+        );
+
+        assertTrue(facetAddress != address(0));
     }
 }
