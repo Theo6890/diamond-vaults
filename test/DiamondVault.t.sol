@@ -118,4 +118,11 @@ contract DiamondVaultTest is Test {
         ownership = OwnershipFacet(address(diamond));
         emit log_named_address("owner", ownership.owner());
     }
+
+    function test_Vault0_SetUser() public {
+        vault0 = Vault0Facet(address(diamond));
+        vault0.setUser(alice);
+
+        assertEq(vault0.getUser(), alice);
+    }
 }
