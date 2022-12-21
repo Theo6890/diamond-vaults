@@ -9,6 +9,6 @@ contract Vault0Facet {
     }
 
     function getUser() public returns (address) {
-        Vault0Lib.getUser();
+        return Vault0Lib.getUser();
     }
 }
