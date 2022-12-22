@@ -38,10 +38,6 @@ contract DiamondVaultTest is Test {
     address alice = 0xBaF6dC2E647aeb6F510f9e318856A1BCd66C5e19;
 
     function setUp() public {
-        string[] memory inputs = new string[](3);
-        inputs[0] = "python3";
-        inputs[1] = "scripts/python/get_selectors.py";
-
         // deploy DiamondCutFacet
         cut = new DiamondCutFacet();
         emit log_named_address("cut addr", address(cut));
@@ -76,7 +72,7 @@ contract DiamondVaultTest is Test {
                 IDiamondCut.FacetCut({
                     facetAddress: facetsAddress[i],
                     action: IDiamondCut.FacetCutAction.Add,
-                    functionSelectors: generateSelectors(facetsName[i])
+                    functionSelectors: _generateSelectors(facetsName[i])
                 })
             );
         }
@@ -91,7 +87,7 @@ contract DiamondVaultTest is Test {
         );
     }
 
-    function generateSelectors(string memory _facetName)
+    function _generateSelectors(string memory _facetName)
         internal
         returns (bytes4[] memory selectors)
     {
