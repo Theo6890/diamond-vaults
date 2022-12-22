@@ -3,13 +3,16 @@ pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 
-import {LibDiamond} from "../src/diamond/core/LibDiamond.sol";
-import {OwnershipFacet} from "../src/diamond/core/OwnershipFacet.sol";
-import {DiamondCutFacet} from "../src/diamond/core/DiamondCut/DiamondCutFacet.sol";
+// Diamond standards
+// Interfaces
 import {IDiamondCut} from "../src/diamond/core/DiamondCut/IDiamondCut.sol";
+// Implementation
+import {DiamondCutFacet} from "../src/diamond/core/DiamondCut/DiamondCutFacet.sol";
 import {DiamondInit} from "../src/diamond/upgradeInitializers/DiamondInit.sol";
 import {DiamondLoupeFacet} from "../src/diamond/core/DiamondLoupe/DiamondLoupeFacet.sol";
+import {OwnershipFacet} from "../src/diamond/core/OwnershipFacet.sol";
 
+// App implementation
 import {DiamondVault} from "../src/app/DiamondVault.sol";
 import {Vault0Facet} from "../src/app/eth-vaults/vault0/Vault0Facet.sol";
 import {Vault0Lib} from "../src/app/eth-vaults/vault0/Vault0Lib.sol";
@@ -19,22 +22,23 @@ import {Vault0Lib} from "../src/app/eth-vaults/vault0/Vault0Lib.sol";
  *      command
  */
 contract DiamondVaultTest is Test {
+    // Diamond standards
     DiamondCutFacet private cut;
-    DiamondVault private diamond;
-    DiamondInit private init;
     DiamondLoupeFacet private loupe;
+    DiamondInit private init;
     OwnershipFacet private ownership;
-
-    // IDiamondCut diamondCut;
-
+    // Facets registration
     address[] facetsAddress;
     string[] facetsName;
     IDiamondCut.FacetCut[] private _facetCuts;
 
+    // App implementation
+    DiamondVault private diamond;
     Vault0Facet vault0;
+
+    // Specfific test variables
     address forgeDeployer = 0xb4c79daB8f259C7Aee6E5b2Aa729821864227e84;
     address msgSender = msg.sender;
-
     address alice = 0xBaF6dC2E647aeb6F510f9e318856A1BCd66C5e19;
 
     function setUp() public {
