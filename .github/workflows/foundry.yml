@@ -26,5 +26,5 @@ jobs:
               id: build
 
             - name: Run Forge tests
-              run: forge test -vvv
+              run: forge test -vvv --ffi
               id: forge-test
