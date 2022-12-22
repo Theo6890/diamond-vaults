@@ -42,6 +42,20 @@ contract DiamondVaultTest is Test {
     address alice = 0xBaF6dC2E647aeb6F510f9e318856A1BCd66C5e19;
 
     function setUp() public {
+        _instanciateFacets();
+        _registrateFacets();
+
+        // upgrade Diamond with facets
+        IDiamondCut(address(diamond)).diamondCut(
+            _facetCuts,
+            address(0x0),
+            ""
+            // address(init),
+            // abi.encodeWithSelector(bytes4(keccak256("init()")))
+        );
+    }
+
+    function _instanciateFacets() private {
         // deploy DiamondCutFacet
         cut = new DiamondCutFacet();
         emit log_named_address("cut addr", address(cut));
@@ -61,7 +75,9 @@ contract DiamondVaultTest is Test {
         // deploy DiamondInit
         init = new DiamondInit();
         emit log_named_address("init addr", address(init));
+    }
 
+    function _registrateFacets() private {
         facetsAddress.push(address(loupe));
         facetsName.push("DiamondLoupeFacet");
         facetsAddress.push(address(ownership));
@@ -80,15 +96,6 @@ contract DiamondVaultTest is Test {
                 })
             );
         }
-
-        // upgrade Diamond with facets
-        IDiamondCut(address(diamond)).diamondCut(
-            _facetCuts,
-            address(0x0),
-            ""
-            // address(init),
-            // abi.encodeWithSelector(bytes4(keccak256("init()")))
-        );
     }
 
     function _generateSelectors(string memory _facetName)
