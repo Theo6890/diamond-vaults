@@ -11,7 +11,9 @@ import {Vault1Facet} from "../../src/app/eth-vaults/vault1/Vault1Facet.sol";
  *      command
  */
 contract DiamondVaultStorageCollisionTest is DiamondVaultStorageCollisionSetUp {
-    function test_Vault0_Vault1_VerifyNoDataCollisionHappens() public {
+    function test_Vault0_Vault1_VerifyNoDataCollisionHappensOn_setYield()
+        public
+    {
         vault0 = Vault0Facet(address(diamond));
         vault0.setYield_Vault0(8);
 
