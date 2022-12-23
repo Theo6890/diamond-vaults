@@ -36,41 +36,43 @@ struct VaultCommons {
  * @notice Common library used accross ALL vaults.
  */
 library LibVaultCommons {
-    function setVaultYield(VaultCommons storage vault, uint8 yieldPercentage)
-        internal
-    {
-        vault.attributes.yield = yieldPercentage;
-    }
-
     function setVaultTimelock(VaultCommons storage vault, Timelock time)
         internal
     {
         vault.attributes.timelock = time;
     }
 
-    function getVaultYield(VaultCommons storage vault)
+    function setVaultYield(VaultCommons storage vault, uint8 yieldPercentage)
         internal
-        returns (uint8)
     {
-        return vault.attributes.yield;
+        vault.attributes.yield = yieldPercentage;
     }
 
     function getVaultTimelock(VaultCommons storage vault)
         internal
+        view
         returns (Timelock)
     {
         return vault.attributes.timelock;
     }
 
-    function amountDepositedBy(address) external pure returns (uint256) {}
+    function getVaultYield(VaultCommons storage vault)
+        internal
+        view
+        returns (uint8)
+    {
+        return vault.attributes.yield;
+    }
 
     function claimRewards() external {}
+
+    function amountDepositedBy(address) external pure returns (uint256) {}
+
+    function pendingRewardsOf(address) public pure returns (uint256) {}
 
     function rewardsClaimedBy() external pure returns (uint256) {}
 
     function totalDeposited() external pure returns (uint256) {}
 
     function totalRewardsClaimed() external pure returns (uint256) {}
-
-    function pendingRewardsOf(address) public pure returns (uint256) {}
 }

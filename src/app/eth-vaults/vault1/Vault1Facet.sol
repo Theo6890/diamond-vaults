@@ -17,11 +17,11 @@ contract Vault1Facet {
         );
     }
 
-    function getTimelock_Vault1() public returns (Timelock) {
+    function getTimelock_Vault1() public view returns (Timelock) {
         return LibVaultCommons.getVaultTimelock(LibVault1.commonStorage());
     }
 
-    function getYield_Vault1() public returns (uint8) {
+    function getYield_Vault1() public view returns (uint8) {
         return LibVaultCommons.getVaultYield(LibVault1.commonStorage());
     }
 }
