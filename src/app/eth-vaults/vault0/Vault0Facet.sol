@@ -1,14 +1,27 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
-import {Vault0Lib} from "./Vault0Lib.sol";
+import {LibVaultCommons, Timelock, VaultCommons} from "../../default/LibVaultCommons.sol";
+
+import {LibVault0} from "./LibVault0.sol";
 
 contract Vault0Facet {
-    function setUser(address user_) public {
-        Vault0Lib.setUser(user_);
+    function setTimelock_Vault0(Timelock time) public {
+        LibVaultCommons.setVaultTimelock(LibVault0.commonStorage(), time);
     }
 
-    function getUser() public returns (address) {
-        return Vault0Lib.getUser();
+    function setYield_Vault0(uint8 yieldPercentage) public {
+        LibVaultCommons.setVaultYield(
+            LibVault0.commonStorage(),
+            yieldPercentage
+        );
+    }
+
+    function getTimelock_Vault0() public returns (Timelock) {
+        return LibVaultCommons.getVaultTimelock(LibVault0.commonStorage());
+    }
+
+    function getYield_Vault0() public returns (uint8) {
+        return LibVaultCommons.getVaultYield(LibVault0.commonStorage());
     }
 }
