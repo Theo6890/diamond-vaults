@@ -13,9 +13,15 @@ import {DiamondLoupeFacet} from "../src/diamond/core/DiamondLoupe/DiamondLoupeFa
 import {OwnershipFacet} from "../src/diamond/core/OwnershipFacet.sol";
 
 // App implementation
+// Interfaces
+import {Timelock, VaultAttributes, DepositData, RewardsData, VaultCommons} from "../src/app/default/LibVaultCommons.sol";
+// Libraries
+import {LibVault0} from "../src/app/eth-vaults/vault0/LibVault0.sol";
+import {LibVault1} from "../src/app/eth-vaults/vault1/LibVault1.sol";
+// Implementations
 import {DiamondVault} from "../src/app/DiamondVault.sol";
 import {Vault0Facet} from "../src/app/eth-vaults/vault0/Vault0Facet.sol";
-import {Vault0Lib} from "../src/app/eth-vaults/vault0/Vault0Lib.sol";
+import {Vault1Facet} from "../src/app/eth-vaults/vault1/Vault1Facet.sol";
 
 /**
  * @dev Launch test with `--ffi` argument as we use a python which is an arbitrary shell
@@ -35,6 +41,7 @@ contract DiamondVaultTest is Test {
     // App implementation
     DiamondVault private diamond;
     Vault0Facet vault0;
+    Vault1Facet vault1;
 
     // Specfific test variables
     address forgeDeployer = 0xb4c79daB8f259C7Aee6E5b2Aa729821864227e84;
@@ -71,6 +78,9 @@ contract DiamondVaultTest is Test {
         // deploy Vault0Facet
         vault0 = new Vault0Facet();
         emit log_named_address("vvault0 addr", address(vault0));
+        // deploy Vault1Facet
+        vault1 = new Vault1Facet();
+        emit log_named_address("vault1 addr", address(vault1));
 
         // deploy DiamondInit
         init = new DiamondInit();
@@ -84,6 +94,8 @@ contract DiamondVaultTest is Test {
         facetsName.push("OwnershipFacet");
         facetsAddress.push(address(vault0));
         facetsName.push("Vault0Facet");
+        facetsAddress.push(address(vault1));
+        facetsName.push("Vault1Facet");
 
         // Create the FacetCut struct for this facet.
         assert(facetsName.length == facetsAddress.length);
@@ -126,10 +138,20 @@ contract DiamondVaultTest is Test {
         emit log_named_address("owner", ownership.owner());
     }
 
-    function test_Vault0_SetUser() public {
+    function test_Vault0_GetDefaultYields() public {
         vault0 = Vault0Facet(address(diamond));
-        vault0.setUser(alice);
+        vault0.setYield_Vault0(8);
 
-        assertEq(vault0.getUser(), alice);
+        assertEq(vault0.getYield_Vault0(), 8);
+    }
+
+    function test_Vault0_Vault1_VerifyNoDataCollisionHappens() public {
+        test_Vault0_GetDefaultYields();
+
+        vault1 = Vault1Facet(address(diamond));
+        vault1.setYield_Vault1(150);
+
+        assertEq(vault1.getYield_Vault1(), 150);
+        assertEq(vault0.getYield_Vault0(), 8);
     }
 }
