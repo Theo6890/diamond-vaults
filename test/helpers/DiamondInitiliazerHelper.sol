@@ -46,7 +46,7 @@ contract DiamondInitiliazerHelper is Test {
         }
     }
 
-    function _generateSelectors(string memory _facetName)
+    function __generateSelectors(string memory _facetName)
         private
         returns (bytes4[] memory selectors)
     {
