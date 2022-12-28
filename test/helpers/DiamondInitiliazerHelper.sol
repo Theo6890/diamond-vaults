@@ -46,6 +46,15 @@ contract DiamondInitiliazerHelper is Test {
         }
     }
 
+    function _updateDiamondWithNewFacets() internal {
+        // upgrade Diamond with new facets
+        IDiamondWritable(address(diamond)).diamondCut(
+            facetCuts,
+            address(0x0),
+            ""
+        );
+    }
+
     function __generateSelectors(string memory _facetName)
         private
         returns (bytes4[] memory selectors)
@@ -56,16 +65,5 @@ contract DiamondInitiliazerHelper is Test {
         cmd[2] = _facetName;
         bytes memory res = vm.ffi(cmd);
         selectors = abi.decode(res, (bytes4[]));
-    }
-
-    function _updateDiamondWithNewFacets() internal {
-        // upgrade Diamond with new facets
-        IDiamondCut(address(diamond)).diamondCut(
-            facetCuts,
-            address(0x0),
-            ""
-            // address(init),
-            // abi.encodeWithSelector(bytes4(keccak256("init()")))
-        );
     }
 }
