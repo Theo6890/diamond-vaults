@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.17;
 
+import {IDiamondReadable} from "solidstate-solidity/proxy/diamond/readable/IDiamondReadable.sol";
+
 import {Vault0Initializer} from "./Vault0Initializer.sol";
-import {DiamondLoupeFacet} from "../../../../src/diamond/core/DiamondLoupe/DiamondLoupeFacet.sol";
 // App
 import {Vault0Facet} from "../../../../src/app/eth-vaults/vault0/Vault0Facet.sol";
 
@@ -13,7 +14,7 @@ contract Vault0FacetTest is Vault0Initializer {
     function test_DiamondLoupeFacet_FetchFacetAddressFrom_setYield_Vault0()
         public
     {
-        address facetAddress = DiamondLoupeFacet(address(diamond)).facetAddress(
+        address facetAddress = IDiamondReadable(address(diamond)).facetAddress(
             bytes4(keccak256("setYield_Vault0(uint8)"))
         );
 

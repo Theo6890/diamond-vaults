@@ -13,12 +13,16 @@ contract DiamondVaultStorageCollisionSetUp is DiamondInitiliazerHelper {
     function setUp() public {
         _instanciateFacets();
         _registerFacetAddressesAndNames();
-        _createAllFacetCut();
-        _updateDiamondWithNewFacets();
+        _createFacetCutFromFacetsAddressFacetsName();
+        _triggerDiamondCut();
     }
 
+    /**
+     * @dev `DiamondInitiliazerHelper._instanciateFacets()` instanciate
+     *      `DiamondVault` contract.
+     */
     function _instanciateFacets() internal override {
-        super._instanciateFacets();
+        DiamondInitiliazerHelper._instanciateFacets();
         // deploy Vault0Facet
         vault0 = new Vault0Facet();
         emit log_named_address("vault0 addr", address(vault0));
@@ -27,8 +31,12 @@ contract DiamondVaultStorageCollisionSetUp is DiamondInitiliazerHelper {
         emit log_named_address("vault1 addr", address(vault1));
     }
 
+    /**
+     * @dev Overrides `DiamondInitiliazerHelper._registerFacetAddressesAndNames`
+     *      without calling previous implementation as it does not exist in
+     *      `DiamondInitiliazerHelper`.
+     */
     function _registerFacetAddressesAndNames() internal override {
-        super._registerFacetAddressesAndNames();
         facetsAddress.push(address(vault0));
         facetsName.push("Vault0Facet");
         facetsAddress.push(address(vault1));
