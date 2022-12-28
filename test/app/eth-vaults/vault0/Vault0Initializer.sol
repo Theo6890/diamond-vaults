@@ -12,7 +12,7 @@ contract Vault0Initializer is DiamondInitiliazerHelper {
         _instanciateFacets();
         _registerFacetAddressesAndNames();
         _createAllFacetCut();
-        _updateDiamondWithNewFacets();
+        _triggerDiamondCut();
     }
 
     function _instanciateFacets() internal override {

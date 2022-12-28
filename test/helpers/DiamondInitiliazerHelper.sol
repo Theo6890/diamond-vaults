@@ -57,7 +57,7 @@ contract DiamondInitiliazerHelper is Test {
         }
     }
 
-    function _updateDiamondWithNewFacets() internal {
+    function _triggerDiamondCut() internal {
         // upgrade Diamond with new facets
         IDiamondWritable(address(diamond)).diamondCut(
             facetCuts,
