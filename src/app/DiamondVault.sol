@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import {Diamond} from "../diamond/core/Diamond.sol";
+import {SolidStateDiamond} from "solidstate-solidity/proxy/diamond/SolidStateDiamond.sol";
 
 /**
  * @notice A diamond contains one or more facets that implement the logic of the app.
@@ -23,8 +23,6 @@ import {Diamond} from "../diamond/core/Diamond.sol";
  *      the mapping will fail.
  *
  */
-contract DiamondVault is Diamond {
-    constructor(address contractOwner_, address diamondCutFacet_)
-        Diamond(contractOwner_, diamondCutFacet_)
-    {}
+contract DiamondVault is SolidStateDiamond {
+
 }
