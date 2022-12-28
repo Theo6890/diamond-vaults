@@ -27,8 +27,19 @@ contract DiamondInitiliazerHelper is Test {
         emit log_named_address("diamond addr", address(diamond));
     }
 
+    /**
+     * @notice This function is only used to populate `facetsAddress` &
+     *      `facetsName`.
+     * @dev Can be overridden so sub tests can either use parent's
+     *      registration while adding their or only keep the name for
+     *      easiness of reading.
+     */
     function _registerFacetAddressesAndNames() internal virtual {}
 
+    /**
+     * @notice Creates all `FacetCut` using addresses and names from
+     *         `facetsAddress` & `facetsName`.
+     */
     function _createAllFacetCut() internal {
         require(
             facetsName.length == facetsAddress.length,
@@ -55,6 +66,10 @@ contract DiamondInitiliazerHelper is Test {
         );
     }
 
+    /**
+     * @notice Generates selectors of a given `_facetName`.
+     * @dev Only used in `_createAllFacetCut()`
+     */
     function __generateSelectors(string memory _facetName)
         private
         returns (bytes4[] memory selectors)
