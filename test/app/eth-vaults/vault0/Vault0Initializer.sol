@@ -11,7 +11,7 @@ contract Vault0Initializer is DiamondInitiliazerHelper {
     function setUp() public {
         _instanciateFacets();
         _registerFacetAddressesAndNames();
-        _createAllFacetCut();
+        _createFacetCutFromFacetsAddressFacetsName();
         _triggerDiamondCut();
     }
 

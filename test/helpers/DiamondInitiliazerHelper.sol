@@ -40,7 +40,7 @@ contract DiamondInitiliazerHelper is Test {
      * @notice Creates all `FacetCut` using addresses and names from
      *         `facetsAddress` & `facetsName`.
      */
-    function _createAllFacetCut() internal {
+    function _createFacetCutFromFacetsAddressFacetsName() internal {
         require(
             facetsName.length == facetsAddress.length,
             "Xyz__Initiliazer.setUp(): facetsName.length != facetsAddress.length"
@@ -68,7 +68,7 @@ contract DiamondInitiliazerHelper is Test {
 
     /**
      * @notice Generates selectors of a given `_facetName`.
-     * @dev Only used in `_createAllFacetCut()`
+     * @dev Only used in `_createFacetCutFromFacetsAddressFacetsName()`
      */
     function __generateSelectors(string memory _facetName)
         private
