@@ -8,6 +8,10 @@ The goal of this repository is to implement the diamond pattern (ERC-2535) throu
 
 All vaults will use the same diamond to store their common data. A vault is a facet of a diamond, as there can be many types of vault with different logic implementation. <br>
 
+Explanation with a dummy diagram:
+![witeboard_Diamond_Vaults_schema](https://user-images.githubusercontent.com/37904797/211539762-67c785fc-604d-4cee-a8f3-2991b49bca4d.png)
+
+
 ### Facet's Storage
 
 A facet can also have a specific proxy storage (eternal storage, another diamonds stockage, etc...). This will depend on the evolution of the dApp complexity throught development lifecycle.
