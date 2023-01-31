@@ -3,7 +3,6 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "emmet.excludeLanguages": ["markdown"],
-    "workbench.colorTheme": "Darcula - WebStorm Edition",
     "files.autoSave": "afterDelay",
     "workbench.startupEditor": "newUntitledFile",
     "todo-tree.tree.showScanModeButton": false,
