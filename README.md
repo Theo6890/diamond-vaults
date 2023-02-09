@@ -19,6 +19,18 @@ A facet can also have a specific proxy storage (eternal storage, another diamond
 
 For greater compasability and module oriented project, a new diamond can be create for each these features: DEXs Integration, Royalities Integration, Streaming Payment Protocol, Streaming Payment Configuration, Multisigs Integration, etc...
 
+## Solidstate Layout
+
+An overview of the uses of each visibility layer is as follows:
+
+| **folder**   | **layer**           | **contents**                                                                | **description**                                                                                                                                                                                                                   | **example**                                                                            |
+| ------------ | ------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **-**        | `interface`         | `enum`, `struct`, `event`, custom `error`, `modifier` & function prototypes | defines anything a child contract needs (even in `IxyzInternal.sol`) to split code in independent modules                                                                                                                         | `IRandomnessWritableInternal.sol`, `IRandomnessFallback.sol`, `IRandomnessReadble.sol` |
+| **fallback** | external            | any function visibility                                                     | set of functions, which are **only** used when a callback is made to the diamond (e.g. `VRFConsumerBaseV2.fulfillRandomWords`). It can modify and/or read the state, which is why it can be nor in `readable` or `writable` only. | `RandomnessFallback.sol`                                                               |
+| **readable** | external            | external or public functions                                                | set of functions that defines a module's getters                                                                                                                                                                                  | `RandomnessReadable.sol`                                                               |
+| **writable** | external & internal | any function visibility                                                     | set of functions that defines a module's core logic; internal function always declares as `xyzWritableInternal.sol`                                                                                                               | `RandomnessInternalWritable.sol`, `RandomnessWritable.sol`                             |
+| **./**       | storage             | internal library functions, structs                                         | library for accessing and modifying storage; useful when sharing access to storage between implementation contracts that will be deployed separately (such as in the "diamond" proxy architecture)                                | `RandomnessStorage.sol`                                                                |
+
 ## Versions
 
 Commits format & version naming: https://r-code.notion.site/Commits-and-versions-bedeee671dec446aa4f8688bc2d9db8c
